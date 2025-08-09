@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://xvqm0uo0sgnp"]
+
+[ext_resource type="Texture2D" uid="uid://bcn2w3q7vd5qk" path="res://spritesheetatlas.tres" id="1_ip7xm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oxp8w"]
+load_path = "res://.godot/imported/roguelikeChar_transparent.png-4d8ca9fe9cb3514f36d26d6da44c9db1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sfm4"]
+atlas = SubResource("CompressedTexture2D_oxp8w")
+region = Rect2(16, 186, 18, 17)
+
+[node name="Battle" type="Node2D"]
+
+[node name="PC" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="PC"]
+texture = ExtResource("1_ip7xm")
+
+[node name="Critter" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Critter"]
+position = Vector2(23, 0)
+texture = SubResource("AtlasTexture_7sfm4")
