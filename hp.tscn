@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2npx03ax483u"]
+[gd_scene load_steps=7 format=3 uid="uid://c2npx03ax483u"]
 
 [ext_resource type="Texture2D" uid="uid://d4goff6jj1pld" path="res://GUI/label_HP_bg.png" id="1_emhcy"]
+[ext_resource type="PackedScene" uid="uid://bvli1daciiuua" path="res://hpbar.tscn" id="1_f4wnk"]
+[ext_resource type="Texture2D" uid="uid://x4c1ciu07bmt" path="res://GUI/bombs_icon.png" id="2_826j4"]
 [ext_resource type="Texture2D" uid="uid://cefpmmtdurj4t" path="res://GUI/label_HP.png" id="2_bji2y"]
+[ext_resource type="Texture2D" uid="uid://bovhyjh24w0sd" path="res://GUI/lifebar_bg.png" id="3_fsnqx"]
+[ext_resource type="Texture2D" uid="uid://kxoo010e7y07" path="res://GUI/lifebar_fill.png" id="4_s5big"]
 
 [node name="GUI" type="MarginContainer"]
 anchors_preset = 10
@@ -15,49 +19,64 @@ theme_override_constants/margin_bottom = 20
 [node name="cols" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="PCHealth" type="HBoxContainer" parent="cols"]
+[node name="HBoxContainer" parent="cols" instance=ExtResource("1_f4wnk")]
 layout_mode = 2
-alignment = 1
-
-[node name="count" type="MarginContainer" parent="cols/PCHealth"]
-layout_mode = 2
-
-[node name="bkg" type="NinePatchRect" parent="cols/PCHealth/count"]
-layout_mode = 2
-texture = ExtResource("1_emhcy")
-
-[node name="title" type="TextureRect" parent="cols/PCHealth/count/bkg"]
-layout_mode = 0
-offset_right = 35.0
-offset_bottom = 24.0
-texture = ExtResource("2_bji2y")
-
-[node name="number" type="Label" parent="cols/PCHealth/count/bkg"]
-layout_mode = 2
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 34.0
-offset_bottom = 4.0
-text = "test
-"
 
 [node name="logo placeholder" type="HBoxContainer" parent="cols"]
 layout_mode = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="cols/logo placeholder"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="cols/logo placeholder/MarginContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("2_826j4")
+expand_mode = 4
+
 [node name="enemyHealth" type="HBoxContainer" parent="cols"]
 layout_mode = 2
 
-[node name="Ecount" type="MarginContainer" parent="cols/enemyHealth"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="cols/enemyHealth"]
 layout_mode = 2
+value = 30.0
+texture_under = ExtResource("3_fsnqx")
+texture_progress = ExtResource("4_s5big")
+
+[node name="Ecount" type="MarginContainer" parent="cols/enemyHealth"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
 
 [node name="bkg" type="NinePatchRect" parent="cols/enemyHealth/Ecount"]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
+texture = ExtResource("1_emhcy")
+region_rect = Rect2(-0.925514, -0.759529, 120.926, 46.7595)
 
 [node name="number" type="Label" parent="cols/enemyHealth/Ecount/bkg"]
+custom_minimum_size = Vector2(40, 50)
 layout_mode = 2
-offset_right = 1.0
-offset_bottom = 23.0
+offset_right = 40.0
+offset_bottom = 50.0
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="title" type="TextureRect" parent="cols/enemyHealth/Ecount/bkg"]
+custom_minimum_size = Vector2(40, 50)
 layout_mode = 2
-offset_bottom = 23.0
+offset_left = 49.0
+offset_top = -2.0
+offset_right = 89.0
+offset_bottom = 48.0
+texture = ExtResource("2_bji2y")
+stretch_mode = 3
