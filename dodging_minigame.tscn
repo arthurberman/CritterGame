@@ -1,6 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn6mca550a38q"]
+[gd_scene load_steps=20 format=3 uid="uid://bn6mca550a38q"]
 
 [ext_resource type="Texture2D" uid="uid://bcn2w3q7vd5qk" path="res://spritesheetatlas.tres" id="1_j6bxu"]
+[ext_resource type="Texture2D" uid="uid://c23foxda3dkjc" path="res://kenney_roguelike-characters-2/Spritesheet/roguelikeChar_transparent.png" id="2_vcs1t"]
+[ext_resource type="Texture2D" uid="uid://68rtxaixu762" path="res://kenney_roguelike-characters-2/tilemap_packed.png" id="3_h4pt4"]
+[ext_resource type="Script" uid="uid://6pecj342isk8" path="res://auto_play.gd" id="4_5141i"]
 
 [sub_resource type="Gradient" id="Gradient_j6bxu"]
 offsets = PackedFloat32Array(0.50974, 0.584416, 0.616883, 0.623377)
@@ -13,6 +16,16 @@ height = 128
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcs1t"]
 size = Vector2(20, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4pt4"]
+atlas = ExtResource("2_vcs1t")
+region = Rect2(478, 118, 13, 9)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5141i"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 12.0
+scale_max = 12.0
 
 [sub_resource type="Animation" id="Animation_j6bxu"]
 resource_name = "fling"
@@ -29,7 +42,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Area/Axe:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -38,37 +51,57 @@ tracks/1/keys = {
 "points": PackedFloat32Array(-269, -0.25, 0, 0.25, 0, -269, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.91)
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area/Axe/GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.88),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_vcs1t"]
 length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area/Axe:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-518, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Area/Axe:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-269, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
+
+[sub_resource type="Animation" id="Animation_5141i"]
+resource_name = "end"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vcs1t"]
 _data = {
 &"RESET": SubResource("Animation_vcs1t"),
+&"end": SubResource("Animation_5141i"),
 &"fling": SubResource("Animation_j6bxu")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5141i"]
+atlas = ExtResource("3_h4pt4")
+region = Rect2(32, 160, 16, 16)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h4pt4"]
+animation = &"fling"
+
+[sub_resource type="GDScript" id="GDScript_6uslm"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5141i"]
+reset = false
+advance_mode = 2
+script = SubResource("GDScript_6uslm")
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6uslm"]
+reset = false
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i1nxi"]
+states/Start/position = Vector2(309.5, 108)
+states/fling/node = SubResource("AnimationNodeAnimation_h4pt4")
+states/fling/position = Vector2(524.5, 108)
+transitions = ["Start", "fling", SubResource("AnimationNodeStateMachineTransition_5141i"), "fling", "End", SubResource("AnimationNodeStateMachineTransition_6uslm")]
+graph_offset = Vector2(209.04, -123.84)
 
 [node name="DodgingMinigame" type="Node2D"]
 
@@ -77,8 +110,7 @@ _data = {
 [node name="Area" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_vcs1t")
 
-[node name="Axe" type="AnimatableBody2D" parent="Area"]
-position = Vector2(-518, -269)
+[node name="Axe" type="Area2D" parent="Area"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Area/Axe"]
 scale = Vector2(10, 10)
@@ -89,7 +121,22 @@ position = Vector2(33, -20)
 shape = SubResource("RectangleShape2D_vcs1t")
 debug_color = Color(0.93073, 2.78196e-05, 0.655608, 0.42)
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Area/Axe"]
+emitting = false
+texture = SubResource("AtlasTexture_h4pt4")
+process_material = SubResource("ParticleProcessMaterial_5141i")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_vcs1t")
 }
+
+[node name="Spider" type="Sprite2D" parent="."]
+position = Vector2(433, -173)
+scale = Vector2(12, 12)
+texture = SubResource("AtlasTexture_5141i")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_i1nxi")
+anim_player = NodePath("../AnimationPlayer")
+script = ExtResource("4_5141i")
