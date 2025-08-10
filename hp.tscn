@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2npx03ax483u"]
+
+[ext_resource type="Texture2D" uid="uid://d4goff6jj1pld" path="res://GUI/label_HP_bg.png" id="1_emhcy"]
+[ext_resource type="Texture2D" uid="uid://cefpmmtdurj4t" path="res://GUI/label_HP.png" id="2_bji2y"]
+
+[node name="GUI" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="cols" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PCHealth" type="HBoxContainer" parent="cols"]
+layout_mode = 2
+alignment = 1
+
+[node name="count" type="MarginContainer" parent="cols/PCHealth"]
+layout_mode = 2
+
+[node name="bkg" type="NinePatchRect" parent="cols/PCHealth/count"]
+layout_mode = 2
+texture = ExtResource("1_emhcy")
+
+[node name="title" type="TextureRect" parent="cols/PCHealth/count/bkg"]
+layout_mode = 0
+offset_right = 35.0
+offset_bottom = 24.0
+texture = ExtResource("2_bji2y")
+
+[node name="number" type="Label" parent="cols/PCHealth/count/bkg"]
+layout_mode = 2
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 34.0
+offset_bottom = 4.0
+text = "test
+"
+
+[node name="logo placeholder" type="HBoxContainer" parent="cols"]
+layout_mode = 2
+
+[node name="enemyHealth" type="HBoxContainer" parent="cols"]
+layout_mode = 2
+
+[node name="Ecount" type="MarginContainer" parent="cols/enemyHealth"]
+layout_mode = 2
+
+[node name="bkg" type="NinePatchRect" parent="cols/enemyHealth/Ecount"]
+layout_mode = 2
+
+[node name="number" type="Label" parent="cols/enemyHealth/Ecount/bkg"]
+layout_mode = 2
+offset_right = 1.0
+offset_bottom = 23.0
+
+[node name="title" type="TextureRect" parent="cols/enemyHealth/Ecount/bkg"]
+layout_mode = 2
+offset_bottom = 23.0
