@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://gvgacensb70w"]
 
 [ext_resource type="Texture2D" uid="uid://dk7s53i2qgmp0" path="res://GUI/kenney_ui-pack-adventure/Vector/panel_brown_damaged.svg" id="1_lti8b"]
-[ext_resource type="Theme" uid="uid://mubul5jdb3ny" path="res://adventure_theme.tres" id="1_mae5d"]
+[ext_resource type="Theme" uid="uid://up1gip3en4t1" path="res://GUI/adventure_theme.tres" id="1_mae5d"]
 [ext_resource type="Texture2D" uid="uid://dhiywjk1kisq7" path="res://GUI/kenney_ui-pack-adventure/Vector/panel_brown_corners_a.svg" id="2_ouk20"]
 
 [node name="Menu" type="Control"]
