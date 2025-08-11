@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn6mca550a38q"]
+[gd_scene load_steps=8 format=3 uid="uid://cb40t2fp8fag5"]
 
 [ext_resource type="Texture2D" uid="uid://bcn2w3q7vd5qk" path="res://spritesheetatlas.tres" id="1_j6bxu"]
 
@@ -13,31 +13,6 @@ height = 128
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcs1t"]
 size = Vector2(20, 50)
-
-[sub_resource type="Animation" id="Animation_vcs1t"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area/Axe:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-518, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Area/Axe:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-269, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="Animation" id="Animation_j6bxu"]
 resource_name = "fling"
@@ -62,6 +37,31 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-269, -0.25, 0, 0.25, 0, -269, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.91)
+}
+
+[sub_resource type="Animation" id="Animation_vcs1t"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area/Axe:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-518, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area/Axe:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-269, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vcs1t"]
