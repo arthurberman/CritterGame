@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://up1gip3en4t1"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://up1gip3en4t1"]
 
 [ext_resource type="FontFile" uid="uid://duweboddfjsoo" path="res://GUI/PressStart2P-Regular.ttf" id="1_ht6iq"]
 [ext_resource type="StyleBox" uid="uid://2fl0hfdlgee3" path="res://GUI/button_adventure.tres" id="2_5r46h"]
+[ext_resource type="StyleBox" uid="uid://c5bf78id1jotd" path="res://GUI/adventure_scrollbar.tres" id="3_5r46h"]
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
@@ -9,3 +10,4 @@ Button/font_sizes/font_size = 14
 Button/fonts/font = ExtResource("1_ht6iq")
 Button/styles/hover = ExtResource("2_5r46h")
 Button/styles/normal = ExtResource("2_5r46h")
+VScrollBar/styles/grabber = ExtResource("3_5r46h")
