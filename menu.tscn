@@ -1,5 +1,159 @@
-[gd_scene format=3 uid="uid://gvgacensb70w"]
+[gd_scene load_steps=4 format=3 uid="uid://gvgacensb70w"]
+
+[ext_resource type="Texture2D" uid="uid://dk7s53i2qgmp0" path="res://GUI/kenney_ui-pack-adventure/Vector/panel_brown_damaged.svg" id="1_lti8b"]
+[ext_resource type="Theme" uid="uid://mubul5jdb3ny" path="res://adventure_theme.tres" id="1_mae5d"]
+[ext_resource type="Texture2D" uid="uid://dhiywjk1kisq7" path="res://GUI/kenney_ui-pack-adventure/Vector/panel_brown_corners_a.svg" id="2_ouk20"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+theme = ExtResource("1_mae5d")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="bars" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="bkg" type="NinePatchRect" parent="MarginContainer/bars"]
+custom_minimum_size = Vector2(900, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_lti8b")
+region_rect = Rect2(0.0242233, -0.270943, 64.0519, 65.268)
+patch_margin_left = 35
+patch_margin_top = 35
+patch_margin_right = 35
+patch_margin_bottom = 35
+axis_stretch_horizontal = 1
+
+[node name="TopRow" type="HSplitContainer" parent="MarginContainer/bars/bkg"]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 125.0
+grow_horizontal = 2
+dragging_enabled = false
+
+[node name="btn1Container" type="MarginContainer" parent="MarginContainer/bars/bkg/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/bars/bkg/TopRow/btn1Container"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ouk20")
+patch_margin_left = 31
+patch_margin_top = 29
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Button" type="Button" parent="MarginContainer/bars/bkg/TopRow/btn1Container/NinePatchRect"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "option 1"
+
+[node name="Btn2Cont" type="MarginContainer" parent="MarginContainer/bars/bkg/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/bars/bkg/TopRow/Btn2Cont"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ouk20")
+patch_margin_left = 29
+patch_margin_top = 27
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Button" type="Button" parent="MarginContainer/bars/bkg/TopRow/Btn2Cont/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "option 2"
+
+[node name="BtmRow" type="HSplitContainer" parent="MarginContainer/bars/bkg"]
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Btn3Cont" type="MarginContainer" parent="MarginContainer/bars/bkg/BtmRow"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/bars/bkg/BtmRow/Btn3Cont"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ouk20")
+patch_margin_left = 28
+patch_margin_top = 29
+patch_margin_right = 28
+patch_margin_bottom = 30
+
+[node name="Button" type="Button" parent="MarginContainer/bars/bkg/BtmRow/Btn3Cont/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Option 3"
+
+[node name="Btn4Cont" type="MarginContainer" parent="MarginContainer/bars/bkg/BtmRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/bars/bkg/BtmRow/Btn4Cont"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ouk20")
+patch_margin_left = 28
+patch_margin_top = 29
+patch_margin_right = 28
+patch_margin_bottom = 30
+
+[node name="Button" type="Button" parent="MarginContainer/bars/bkg/BtmRow/Btn4Cont/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Option 4"
